@@ -1,0 +1,5 @@
+{
+  "sampleKeyWorld": "text to translate <0>xD</0>",
+  "helloWorld": "Hello World! {{count}}",
+  "justOne": "How are you {something}"
+}

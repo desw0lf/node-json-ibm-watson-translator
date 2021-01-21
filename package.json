@@ -1,0 +1,39 @@
+{
+  "name": "node-json-ibm-watson-translator",
+  "version": "1.0.0",
+  "description": "Node JSON files translator",
+  "main": "main.js",
+  "bin": {
+    "json-ibm-watson-translator": "./dist/main.js"
+  },
+  "scripts": {
+    "start": "tsc && node dist/main.js",
+    "build": "tsc",
+    "prettier": "prettier",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "deswolf",
+  "keywords": [
+    "json",
+    "ibm",
+    "ibm",
+    "watson",
+    "translate",
+    "translator"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "eslint": "^7.18.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.2.1"
+  }
+}
