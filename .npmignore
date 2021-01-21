@@ -1,0 +1,8 @@
+locales/
+src/
+.prettierignore
+.prettierrc
+njiwt.json
+njwit.SAMPLE.json
+.eslintrc
+.vscode
