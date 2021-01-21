@@ -1,4 +1,4 @@
-import { getInsideDoubleCurly } from "../helpers/get-inside-doubly-curly";
+import { getInsideDoubleCurly } from "../helpers/replacements";
 // ? TYPES:
 import { JSONContent } from "../types";
 
