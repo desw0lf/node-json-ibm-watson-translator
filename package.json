@@ -4,10 +4,12 @@
   "description": "Node JSON files translator",
   "main": "main.js",
   "bin": {
-    "node-json-ibm-watson-translator": "./dist/main.js"
+    "node-json-ibm-watson-translator": "./dist/main.js",
+    "node-json-ibm-watson-translator-languages": "./dist/languages.js"
   },
   "scripts": {
     "start": "tsc && node dist/main.js",
+    "start-languages": "tsc && node dist/languages.js",
     "build": "tsc",
     "prettier": "prettier",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -23,6 +23,9 @@ or global
 }
 ```
 
+# (Extra): Generate supported languages .json file
+`LANGUAGES_PATH=./supported-languages.json node-json-ibm-watson-translator-languages`
+
 # TODO
 - Instead of overwriting whole files, ability to add new keys only to existing translations
 - Make sure attributes of html elements are not translated in all languages

@@ -13,9 +13,13 @@ function createFile(filePath: string, data: any, callback: () => void) {
   });
 }
 
-export function writeFile(filePath: string, data: any): void {
+export function writeFile(
+  filePath: string,
+  data: any,
+  successMessage = "Translation Saved!"
+): void {
   createDir(filePath);
   createFile(filePath, data, function () {
-    console.log(chalk.bold.green("Translation Saved!") + " " + filePath);
+    console.log(chalk.bold.green(successMessage) + " " + filePath);
   });
 }
