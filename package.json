@@ -4,7 +4,7 @@
   "description": "Node JSON files translator",
   "main": "main.js",
   "bin": {
-    "json-ibm-watson-translator": "./dist/main.js"
+    "node-json-ibm-watson-translator": "./dist/main.js"
   },
   "scripts": {
     "start": "tsc && node dist/main.js",
@@ -13,6 +13,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "deswolf",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/desw0lf/node-json-ibm-watson-translator.git"
+  },
   "keywords": [
     "json",
     "ibm",
