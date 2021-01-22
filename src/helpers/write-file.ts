@@ -16,6 +16,6 @@ function createFile(filePath: string, data: any, callback: () => void) {
 export function writeFile(filePath: string, data: any): void {
   createDir(filePath);
   createFile(filePath, data, function () {
-    console.log(chalk.black.bold.bgGreen("Translation Saved! ") + filePath);
+    console.log(chalk.bold.green("Translation Saved!") + " " + filePath);
   });
 }

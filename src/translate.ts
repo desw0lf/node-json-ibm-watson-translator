@@ -1,4 +1,4 @@
-import chalk from "chalk";
+// import chalk from "chalk";
 import { doubleCurlyReplacement, tagReplacement } from "./helpers/replacements";
 import { writeFile } from "./helpers/write-file";
 // ? TYPES:
@@ -12,7 +12,7 @@ export function translateFile(
   outputPath: string,
   replacements: { doubleCurly: string[][]; tags: string[][] }
 ): void {
-  console.log(chalk.green("API Success: ") + filename);
+  // console.log(chalk.green("API Success: ") + filename);
   const translation = Object.entries(indexes).reduce(
     (final: JSONContent, [key, no]) => {
       const raw = output.translations[no].translation;

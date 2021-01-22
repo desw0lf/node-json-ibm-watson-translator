@@ -52,16 +52,16 @@ export function tagReplacement(str: string, replacements: string[]): string {
   if (replacements.length === 0) {
     return str;
   }
-  const tags = replacements.map((r) => {
-    const index = r.indexOf(" ");
-    if (index === -1) {
-      return r;
-    }
-    return r.substr(0, index);
-  });
+  // const tags = replacements.map((r) => {
+  //   const index = r.indexOf(" ");
+  //   if (index === -1) {
+  //     return r;
+  //   }
+  //   return r.substr(0, index);
+  // });
   // console.log(replacements);
-  console.log(tags);
-  const replacementsWithAngleBrackets = replacements.map((r) => "<" + r + ">");
+  // console.log(tags);
+  // const replacementsWithAngleBrackets = replacements.map((r) => "<" + r + ">");
   const trim = str
     .replace(/\s\<(\/\S+)\>/g, "<$1>")
     .replace(/\<([a-z0-9\s]+)\>\s/gi, "<$1>");
