@@ -20,7 +20,12 @@ export function translateFile(
         raw,
         replacements.doubleCurly[no]
       );
-      final[key] = removedDoublyCurly;
+      const tagsFixed = tagReplacement(
+        removedDoublyCurly,
+        replacements.tags[no]
+      );
+      // console.log(tagsFixed);
+      final[key] = tagsFixed;
       return final;
     },
     { ...originalData }

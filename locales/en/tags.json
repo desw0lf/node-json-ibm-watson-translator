@@ -1,0 +1,6 @@
+{
+  "tagSimple": "Sample text <0>hello world</0> something else <1>okay</1>",
+  "tagHtmlSimple": "Where are you from <span>Mongolia</span>.",
+  "tagAdvanced": "This is simply a dummy text <a href='https://google.com' title='fun title' target='_blank'>click here</a>. Danger <strong>don't click here</strong>.",
+  "testix": "Good afternoon, 'good morning'"
+}

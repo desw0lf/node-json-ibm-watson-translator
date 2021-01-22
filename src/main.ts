@@ -21,18 +21,32 @@ function init() {
       console.log(chalk.magenta("- ") + filename);
       readJsonFile(filename, function (data) {
         const mappings = indexOriginalDataMapping(data);
-        postTranslate({
-          url: config.url,
-          inputLanguage: config.inputLanguage,
-          outputLanguage: OUTPUT_LANGUAGE,
-          apikey: config.apikey,
-          translations: mappings.array,
-        }, function (response) {
-          const outputPath = filename.replace(`/${config.inputLanguage}/`, `/${OUTPUT_LANGUAGE}/`);
-          translateFile(filename, data, response, mappings.indexes, outputPath, {
-            doubleCurly: mappings.doubleCurly
-          });
-        })
+        postTranslate(
+          {
+            url: config.url,
+            inputLanguage: config.inputLanguage,
+            outputLanguage: OUTPUT_LANGUAGE,
+            apikey: config.apikey,
+            translations: mappings.array,
+          },
+          function (response) {
+            const outputPath = filename.replace(
+              `/${config.inputLanguage}/`,
+              `/${OUTPUT_LANGUAGE}/`
+            );
+            translateFile(
+              filename,
+              data,
+              response,
+              mappings.indexes,
+              outputPath,
+              {
+                doubleCurly: mappings.doubleCurly,
+                tags: mappings.tags,
+              }
+            );
+          }
+        );
       });
     }
   );
