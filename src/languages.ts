@@ -6,6 +6,10 @@ import { writeFile } from "./helpers/write-file";
 import chalk from "chalk";
 // ? TYPES:
 
+const UNSUPPORTED_CODES = ["ca", "eu", "ko", "sr"];
+// ca + eu: "code": 404, "error": "Model not found."
+// ko + sr: wrong <tag> translation
+
 const config = loadConfig(CONFIG_PATH);
 const LANGUAGES_PATH =
   process.env.LANGUAGES_PATH || "./supported-languages.json";
@@ -18,7 +22,9 @@ function init() {
       apikey: config.apikey,
     },
     function (response) {
-      const languages = response.languages.filter((l) => l.supported_as_target);
+      const languages = response.languages
+        .filter((l) => l.supported_as_target)
+        .filter((l) => !UNSUPPORTED_CODES.includes(l.language));
       console.log(
         "[ " + chalk.yellow(languages.length) + " supported languages ]"
       );
