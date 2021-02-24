@@ -1,5 +1,10 @@
 #!/usr/bin/env node
-import { LOCALE_FOLDER, OUTPUT_LANGUAGES, CONFIG_PATH } from "./vars";
+import {
+  LOCALE_FOLDER,
+  OUTPUT_LANGUAGES,
+  CONFIG_PATH,
+  TRANSLATION_DELAY,
+} from "./vars";
 import { loadConfig } from "./load-config";
 import { fromDir } from "./helpers/from-dir";
 import { readJsonFile } from "./helpers/read-json-file";
@@ -52,6 +57,14 @@ function init(outputLng: string) {
   );
 }
 
-for (let i = 0; i < OUTPUT_LANGUAGES.length; i += 1) {
-  init(OUTPUT_LANGUAGES[i]);
+for (let i = 0; i < OUTPUT_LANGUAGES.length; i++) {
+  (function (ind) {
+    setTimeout(function () {
+      init(OUTPUT_LANGUAGES[ind]);
+    }, TRANSLATION_DELAY * ind);
+  })(i);
 }
+
+// for (let i = 0; i < OUTPUT_LANGUAGES.length; i += 1) {
+//   init(OUTPUT_LANGUAGES[i]);
+// }
