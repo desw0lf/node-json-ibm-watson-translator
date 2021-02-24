@@ -23,7 +23,7 @@ function init(outputLng: string) {
     LOCALE_FOLDER + "/" + config.inputLanguage,
     /\.json$/,
     function (filename) {
-      console.log(chalk.magenta("- ") + filename);
+      // console.log(chalk.magenta("- ") + filename);
       readJsonFile(filename, function (data) {
         const mappings = indexOriginalDataMapping(data);
         postTranslate(

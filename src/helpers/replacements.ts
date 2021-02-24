@@ -4,18 +4,18 @@ function findReplaceDoubleCurly(
   find = ".*?"
 ): string {
   let index = 0;
-  if (/[a-zA-Z\_]+/g.test(str)) {
-    return str.replace(
-      new RegExp("{{(?:\\s+)?(" + find + ")(?:\\s+)?}}", "g"),
-      function () {
-        return replace[index++];
-      }
-    );
-  } else {
-    throw new Error(
-      "Find statement does not match regular expression: /[a-zA-Z_]+/"
-    );
-  }
+  // if (/[a-zA-Z\_]+/g.test(str)) {
+  return str.replace(
+    new RegExp("{{(?:\\s+)?(" + find + ")(?:\\s+)?}}", "g"),
+    function () {
+      return replace[index++];
+    }
+  );
+  // } else {
+  //   throw new Error(
+  //     "Find statement does not match regular expression: /[a-zA-Z_]+/"
+  //   );
+  // }
 }
 
 export const getInsideDoubleCurly = (str: string): string[] =>
