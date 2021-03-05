@@ -6,6 +6,9 @@ or global
 # Usage
 `node-json-ibm-watson-translator`
 
+![Example Console](docs/assets/example-console.gif?raw=true)
+
+
 # Vars
 
 | Attribute | Default | Description |
@@ -27,5 +30,7 @@ or global
 `LANGUAGES_PATH=./supported-languages.json node-json-ibm-watson-translator-languages`
 
 # TODO
+- Add the option not to translate certain words/phrases
+- Multi level JSON objects. (At the moment only strings and arrays are supported)
 - Instead of overwriting whole files, ability to add new keys only to existing translations
 - Make sure attributes of html elements are not translated in all languages

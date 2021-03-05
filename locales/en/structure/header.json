@@ -1,0 +1,22 @@
+{
+    "title": "Page not found",
+    "subtext": "Sorry, we couldn't find this page.",
+    "home": "Home",
+    "products": "Products",
+    "results": "Search Results",
+    "title3": "No search results",
+    "subtext_html": "Your search for <strong>{{terms}}</strong> did not yield any results. Try searching for something else.",
+    "summary": "Page {{ current_page }} of {{ pages }}",
+    "previous": "Previous",
+    "next": "Next",
+    "message": "Notify link clicks i18n",
+    "description": "Name of the extension.",
+    "message3": "Shows a notification when the user clicks on links.",
+    "description2": "Description of the extension.",
+    "message4": "Click notification",
+    "description3": "Title of the click notification.",
+    "message5": "You clicked $URL$.",
+    "description4": "Tells the user which link they clicked.",
+    "content" : "$1 test",
+    "example" : "https://google.com"
+}
