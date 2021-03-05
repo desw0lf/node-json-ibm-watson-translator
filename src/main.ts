@@ -18,7 +18,7 @@ import { spinnies } from "./helpers/spinnies";
 const config = loadConfig(CONFIG_PATH);
 
 function init(outputLng: string) {
-  console.log(chalk.bgMagenta(" # Files to be translated: "));
+  // console.log(chalk.bgMagenta(" # Files to be translated: "));
   console.log(chalk.cyan(config.inputLanguage + " ==> " + outputLng));
   fromDir(
     LOCALE_FOLDER + "/" + config.inputLanguage,
@@ -58,6 +58,24 @@ function init(outputLng: string) {
     }
   );
 }
+// Starter consoles
+const EMPTY_MAGENTA = "                                      ";
+const IS_S = OUTPUT_LANGUAGES.length === 1 ? "" : "s";
+console.log(chalk.bgMagenta(EMPTY_MAGENTA));
+console.log(" ");
+console.log(
+  chalk.magenta(
+    "## " +
+      chalk.bold(OUTPUT_LANGUAGES.length) +
+      " ## language" +
+      IS_S +
+      " to be translated: "
+  )
+);
+console.log(chalk.yellow(OUTPUT_LANGUAGES.join(", ")));
+console.log(chalk.magenta("-"));
+console.log(" ");
+// Starter consoles -- end
 
 for (let i = 0; i < OUTPUT_LANGUAGES.length; i++) {
   (function (ind) {
