@@ -1,4 +1,5 @@
 import { getInsideDoubleCurly, getInsideTag } from "../helpers/replacements";
+import chalk from "chalk";
 // ? TYPES:
 import { JSONContent } from "../types";
 
@@ -23,7 +24,12 @@ export function indexOriginalDataMapping(
       for (i = 0; i < length; i += 1) {
         const value = valueArray[i];
         if (typeof value !== "string") {
-          throw new Error("JSON value not a string or string[].");
+          console.log(
+            chalk.bgRed("JSON object value not a string or string[]:")
+          );
+          console.log(JSON.stringify(value));
+          console.log(chalk.bgRed("___________________________________"));
+          throw new Error();
         }
         final.array.push(value);
         final.doubleCurly.push(getInsideDoubleCurly(value));
