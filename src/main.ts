@@ -12,6 +12,7 @@ import { postTranslate } from "./services/translator";
 import { indexOriginalDataMapping } from "./helpers/index-original-data-mapping";
 import { translateFile } from "./translate";
 import chalk from "chalk";
+import { spinnies } from "./helpers/spinnies";
 // ? TYPES:
 
 const config = loadConfig(CONFIG_PATH);
@@ -23,6 +24,11 @@ function init(outputLng: string) {
     LOCALE_FOLDER + "/" + config.inputLanguage,
     /\.json$/,
     function (filename) {
+      const outputPath = filename.replace(
+        `/${config.inputLanguage}/`,
+        `/${outputLng}/`
+      );
+      spinnies.add(outputPath, { text: outputPath });
       // console.log(chalk.magenta("- ") + filename);
       readJsonFile(filename, function (data) {
         const mappings = indexOriginalDataMapping(data);
@@ -35,10 +41,6 @@ function init(outputLng: string) {
             translations: mappings.array,
           },
           function (response) {
-            const outputPath = filename.replace(
-              `/${config.inputLanguage}/`,
-              `/${outputLng}/`
-            );
             translateFile(
               filename,
               data,

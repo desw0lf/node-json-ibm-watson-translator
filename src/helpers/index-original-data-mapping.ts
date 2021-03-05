@@ -22,6 +22,9 @@ export function indexOriginalDataMapping(
       const length = valueArray.length;
       for (i = 0; i < length; i += 1) {
         const value = valueArray[i];
+        if (typeof value !== "string") {
+          throw new Error("JSON value not a string or string[].");
+        }
         final.array.push(value);
         final.doubleCurly.push(getInsideDoubleCurly(value));
         final.tags.push(getInsideTag(value));
