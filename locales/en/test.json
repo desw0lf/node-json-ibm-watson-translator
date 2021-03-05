@@ -1,4 +1,9 @@
 {
   "sampleKeyTest": "text to translate",
-  "helloWorldxD": "Hello World!"
+  "arrayTest": ["sample mej", "name surname"],
+  "helloWorldxD": "Hello World!",
+  "arrayTest3": ["another translation", "hehe", "where are you from"],
+  "arrayTest4": ["another"],
+  "arrayTest5": ["hello", "bye"],
+  "arrayTest6": "nice"
 }

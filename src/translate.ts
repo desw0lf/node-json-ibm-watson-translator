@@ -8,24 +8,39 @@ export function translateFile(
   filename: string,
   originalData: JSONContent,
   output: APITranslateOutput,
-  indexes: { [key: string]: number },
+  indexes: { [key: string]: number[] | number },
   outputPath: string,
   replacements: { doubleCurly: string[][]; tags: string[][] }
 ): void {
   // console.log(chalk.green("API Success: ") + filename);
+  // console.log(indexes);
   const translation = Object.entries(indexes).reduce(
-    (final: JSONContent, [key, no]) => {
-      const raw = output.translations[no].translation;
-      const removedDoublyCurly = doubleCurlyReplacement(
-        raw,
-        replacements.doubleCurly[no]
-      );
-      const tagsFixed = tagReplacement(
-        removedDoublyCurly,
-        replacements.tags[no]
-      );
+    (final: JSONContent, [key, noArrayOrNumber]) => {
+      const isArray = noArrayOrNumber.constructor === Array;
+      const noArray: number[] = isArray
+        ? (noArrayOrNumber as number[])
+        : [noArrayOrNumber as number];
+      let tagsFixedAll: string | string[] = [];
+      let i: number;
+      for (i = 0; i < noArray.length; i += 1) {
+        const no = noArray[i];
+        const raw = output.translations[no].translation;
+        const removedDoublyCurly = doubleCurlyReplacement(
+          raw,
+          replacements.doubleCurly[no]
+        );
+        const tagsFixed = tagReplacement(
+          removedDoublyCurly,
+          replacements.tags[no]
+        );
+        if (isArray) {
+          (tagsFixedAll as string[]).push(tagsFixed);
+        } else {
+          tagsFixedAll = tagsFixed;
+        }
+      }
       // console.log(tagsFixed);
-      final[key] = tagsFixed;
+      final[key] = tagsFixedAll;
       return final;
     },
     { ...originalData }

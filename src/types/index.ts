@@ -1,4 +1,4 @@
-export type JSONContent = { [key: string]: string };
+export type JSONContent = { [key: string]: string | string[] };
 export type Config = {
   url: string;
   apikey: string;
