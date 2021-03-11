@@ -33,11 +33,11 @@ function init(outputLng: string) {
       );
       spinnies.add(outputPath, { text: outputPath });
       // console.log(chalk.magenta("- ") + filename);
-      readJsonFile(filename, function (data) {
-        const fname = path.parse(filename).name;
-        if (FORCED_GLOSSARY_FILES.includes(fname)) {
-          copyFile(filename, outputPath);
-        } else {
+      const fname = path.parse(filename).name;
+      if (FORCED_GLOSSARY_FILES.includes(fname)) {
+        copyFile(filename, outputPath);
+      } else {
+        readJsonFile(filename, function (data) {
           const mappings = indexOriginalDataMapping(data);
           postTranslate(
             {
@@ -61,8 +61,8 @@ function init(outputLng: string) {
               );
             }
           );
-        }
-      });
+        });
+      }
     }
   );
 }
