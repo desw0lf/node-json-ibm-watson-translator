@@ -59,6 +59,7 @@ function init(outputLng: string) {
               {
                 doubleCurly: mappings.doubleCurly,
                 tags: mappings.tags,
+                nesting: mappings.nesting,
               }
             );
           }

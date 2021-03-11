@@ -1,4 +1,8 @@
-import { getInsideDoubleCurly, getInsideTag } from "../helpers/replacements";
+import {
+  getInsideDoubleCurly,
+  getInsideTag,
+  getInsideNesting,
+} from "../helpers/replacements";
 import chalk from "chalk";
 // ? TYPES:
 import { JSONContent } from "../types";
@@ -9,6 +13,7 @@ export function indexOriginalDataMapping(
   array: string[];
   doubleCurly: string[][];
   tags: string[][];
+  nesting: string[][];
   indexes: { [key: string]: number[] | number };
 } {
   let extraI = 0;
@@ -33,6 +38,7 @@ export function indexOriginalDataMapping(
         }
         final.array.push(value);
         final.doubleCurly.push(getInsideDoubleCurly(value));
+        final.nesting.push(getInsideNesting(value));
         final.tags.push(getInsideTag(value));
       }
       let curr: number | number[];
@@ -57,6 +63,7 @@ export function indexOriginalDataMapping(
       array: [],
       doubleCurly: [],
       tags: [],
+      nesting: [],
       indexes: {},
     }
   );

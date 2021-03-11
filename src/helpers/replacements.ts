@@ -69,3 +69,29 @@ export function tagReplacement(str: string, replacements: string[]): string {
   // const y = findReplaceDoubleCurly(z, replacementsWithDoublyCurly);
   return trim;
 }
+
+//
+
+function findReplaceNesting(str: string, replace: string[]): string {
+  let index = 0;
+  return str.replace(/(?:\$\s*[t]\s*\(\s*)(.*?)(?:\s*\))/g, function () {
+    return replace[index++];
+  });
+}
+
+export const getInsideNesting = (str: string): string[] =>
+  str
+    .split("$t(")
+    .filter((val) => val.includes(")"))
+    .map((val) => val.substring(0, val.indexOf(")")));
+
+export function nestingReplacement(
+  str: string,
+  replacements: string[]
+): string {
+  if (replacements.length === 0) {
+    return str;
+  }
+  const replacementsWithNesting = replacements.map((r) => "$t(" + r + ")");
+  return findReplaceNesting(str, replacementsWithNesting);
+}

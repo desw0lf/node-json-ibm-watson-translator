@@ -5,5 +5,7 @@
   "arrayTest3": ["another translation", "bridal crown", "considered to be a prime example of Norwegian romantic"],
   "arrayTest4": ["another"],
   "arrayTest5": ["hello", "bye"],
-  "arrayTest6": "The painting is in the collection of the National Gallery in Oslo"
+  "arrayTest6": "The painting is in the collection of the National Gallery in Oslo",
+  "nestingTest": "Sample $t(g:Do not translate me1) text",
+  "nestingTest2": "Example $t(g:Do not translate me1) direction $t(g:Another value)"
 }

@@ -1,8 +1,32 @@
 // import chalk from "chalk";
-import { doubleCurlyReplacement, tagReplacement } from "./helpers/replacements";
+import {
+  doubleCurlyReplacement,
+  tagReplacement,
+  nestingReplacement,
+} from "./helpers/replacements";
 import { writeFile } from "./helpers/write-file";
 // ? TYPES:
 import { APITranslateOutput, JSONContent } from "./types";
+
+interface Replacements {
+  doubleCurly: string[][];
+  tags: string[][];
+  nesting: string[][];
+}
+
+function replaceStuff(
+  raw: string,
+  no: number,
+  replacements: Replacements
+): string {
+  const removedDoublyCurly = doubleCurlyReplacement(
+    raw,
+    replacements.doubleCurly[no]
+  );
+  const tagsFixed = tagReplacement(removedDoublyCurly, replacements.tags[no]);
+  const nestingFixed = nestingReplacement(tagsFixed, replacements.nesting[no]);
+  return nestingFixed;
+}
 
 export function translateFile(
   filename: string,
@@ -10,7 +34,7 @@ export function translateFile(
   output: APITranslateOutput,
   indexes: { [key: string]: number[] | number },
   outputPath: string,
-  replacements: { doubleCurly: string[][]; tags: string[][] }
+  replacements: Replacements
 ): void {
   // console.log(chalk.green("API Success: ") + filename);
   // console.log(indexes);
@@ -25,18 +49,11 @@ export function translateFile(
       for (i = 0; i < noArray.length; i += 1) {
         const no = noArray[i];
         const raw = output.translations[no].translation;
-        const removedDoublyCurly = doubleCurlyReplacement(
-          raw,
-          replacements.doubleCurly[no]
-        );
-        const tagsFixed = tagReplacement(
-          removedDoublyCurly,
-          replacements.tags[no]
-        );
+        const replaced = replaceStuff(raw, no, replacements);
         if (isArray) {
-          (tagsFixedAll as string[]).push(tagsFixed);
+          (tagsFixedAll as string[]).push(replaced);
         } else {
-          tagsFixedAll = tagsFixed;
+          tagsFixedAll = replaced;
         }
       }
       // console.log(tagsFixed);

@@ -8,6 +8,12 @@ or global
 
 ![Example Console](docs/assets/example-console.gif?raw=true)
 
+# Supports:
+- `{{interpolation}}`
+- `<span>sample</span>`
+- `<0>sample</0>`
+- `<a href="http://google.com">sample</a>`
+- `$t(g:Nested key)` 
 
 # Vars
 
