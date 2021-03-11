@@ -37,3 +37,23 @@ export type APILanguagesOutput = {
     identifiable: boolean;
   }[];
 };
+
+export type ChalkColour =
+  | "black"
+  | "red"
+  | "green"
+  | "yellow"
+  | "blue"
+  | "magenta"
+  | "cyan"
+  | "white"
+  | "blackBright"
+  | "redBright"
+  | "greenBright"
+  | "yellowBright"
+  | "blueBright"
+  | "magentaBright"
+  | "cyanBright"
+  | "whiteBright"
+  | "gray"
+  | "grey";

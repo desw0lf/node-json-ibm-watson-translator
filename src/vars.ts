@@ -11,3 +11,6 @@ export const TRANSLATION_DELAY = process.env.TRANSLATION_DELAY
 export const FORCED_GLOSSARY_FILES = process.env.FORCED_GLOSSARY_FILES
   ? process.env.FORCED_GLOSSARY_FILES.split(",").map((f) => path.parse(f).name)
   : ["g"];
+export const COPY_FILES = process.env.COPY_FILES
+  ? process.env.COPY_FILES.split(",")
+  : ["index.js", "index.ts"];
