@@ -4,13 +4,16 @@ import {
   OUTPUT_LANGUAGES,
   CONFIG_PATH,
   TRANSLATION_DELAY,
+  FORCED_GLOSSARY_FILES,
 } from "./vars";
+import path from "path";
 import { loadConfig } from "./load-config";
 import { fromDir } from "./helpers/from-dir";
 import { readJsonFile } from "./helpers/read-json-file";
 import { postTranslate } from "./services/translator";
 import { indexOriginalDataMapping } from "./helpers/index-original-data-mapping";
 import { translateFile } from "./translate";
+import { copyFile } from "./helpers/copy-file";
 import chalk from "chalk";
 import { spinnies } from "./helpers/spinnies";
 // ? TYPES:
@@ -31,29 +34,34 @@ function init(outputLng: string) {
       spinnies.add(outputPath, { text: outputPath });
       // console.log(chalk.magenta("- ") + filename);
       readJsonFile(filename, function (data) {
-        const mappings = indexOriginalDataMapping(data);
-        postTranslate(
-          {
-            url: config.url,
-            inputLanguage: config.inputLanguage,
-            outputLanguage: outputLng,
-            apikey: config.apikey,
-            translations: mappings.array,
-          },
-          function (response) {
-            translateFile(
-              filename,
-              data,
-              response,
-              mappings.indexes,
-              outputPath,
-              {
-                doubleCurly: mappings.doubleCurly,
-                tags: mappings.tags,
-              }
-            );
-          }
-        );
+        const fname = path.parse(filename).name;
+        if (FORCED_GLOSSARY_FILES.includes(fname)) {
+          copyFile(filename, outputPath);
+        } else {
+          const mappings = indexOriginalDataMapping(data);
+          postTranslate(
+            {
+              url: config.url,
+              inputLanguage: config.inputLanguage,
+              outputLanguage: outputLng,
+              apikey: config.apikey,
+              translations: mappings.array,
+            },
+            function (response) {
+              translateFile(
+                filename,
+                data,
+                response,
+                mappings.indexes,
+                outputPath,
+                {
+                  doubleCurly: mappings.doubleCurly,
+                  tags: mappings.tags,
+                }
+              );
+            }
+          );
+        }
       });
     }
   );

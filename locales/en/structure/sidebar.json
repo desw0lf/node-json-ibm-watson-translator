@@ -1,5 +1,5 @@
 {
-  "sampleKeyWorld": "text to translate <0>what is going on</0>",
+  "sampleKeyWorld": "text to translate <0>Lorem Ipsum is simply dummy text</0>",
   "helloWorld": "Hello World! {{count}}",
-  "justOne": "How are you {{something}} something else {{otherVariable}} {{cool}}"
+  "justOne": "when an unknown printer took {{something}} something else {{otherVariable}} {{cool}}"
 }

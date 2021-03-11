@@ -16,6 +16,7 @@ or global
 | `LOCALE_FOLDER` | `./locales` | Name of the locales folder, inside should be language folders e.g. "en" |
 | `OUTPUT_LANGUAGES` | `fr` | Comma separated list of languages to be translated into |
 | `CONFIG_PATH` | `./njiwt.json` | Path for the config file (see below) |
+| `FORCED_GLOSSARY_FILES` | `g` | Comma separated list of names of the files that will not be translated, just copied |
 
 # Config file structure (.json)
 ```
@@ -30,6 +31,7 @@ or global
 `LANGUAGES_PATH=./supported-languages.json node-json-ibm-watson-translator-languages`
 
 # TODO
+- Windows OS support
 - Add the option not to translate certain words/phrases
 - Multi level JSON objects. (At the moment only strings and arrays are supported)
 - Instead of overwriting whole files, ability to add new keys only to existing translations

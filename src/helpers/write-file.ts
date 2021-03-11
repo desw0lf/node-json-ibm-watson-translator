@@ -1,10 +1,7 @@
 import * as fs from "fs";
 // import chalk from "chalk";
 import { spinnies } from "./spinnies";
-function createDir(filePath: string): void {
-  const dirPath = filePath.substr(0, filePath.lastIndexOf("/"));
-  fs.mkdirSync(dirPath, { recursive: true });
-}
+import { createDir } from "./create-dir";
 
 function createFile(filePath: string, data: any, callback: () => void) {
   fs.writeFile(filePath, data, (err) => {

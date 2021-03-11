@@ -1,9 +1,9 @@
 {
   "sampleKeyTest": "text to translate",
-  "arrayTest": ["sample mej", "name surname"],
+  "arrayTest": ["sample text", "name surname"],
   "helloWorldxD": "Hello World!",
-  "arrayTest3": ["another translation", "hehe", "where are you from"],
+  "arrayTest3": ["another translation", "bridal crown", "considered to be a prime example of Norwegian romantic"],
   "arrayTest4": ["another"],
   "arrayTest5": ["hello", "bye"],
-  "arrayTest6": "nice"
+  "arrayTest6": "The painting is in the collection of the National Gallery in Oslo"
 }
