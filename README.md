@@ -40,6 +40,6 @@ or global
 # TODO
 - Windows OS support
 - Add the option not to translate certain words/phrases
-- Multi level JSON objects. (At the moment only strings and arrays are supported)
+- Recursive multi level JSON objects and arrays. (At the moment only strings, 1st level arrays and 1st level objects)
 - Instead of overwriting whole files, ability to add new keys only to existing translations
 - Make sure attributes of html elements are not translated in all languages

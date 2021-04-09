@@ -7,5 +7,9 @@
   "arrayTest5": ["hello", "bye"],
   "arrayTest6": "The painting is in the collection of the National Gallery in Oslo",
   "nestingTest": "Sample $t(g:Do not translate me1) text",
-  "nestingTest2": "Example $t(g:Do not translate me1) direction $t(g:Another value)"
+  "nestingTest2": "Example $t(g:Do not translate me1) direction $t(g:Another value)",
+  "objectTest": {
+    "test1": "I am object inside object",
+    "test13": "This is a sample text $t(g:Do not translate me1) prime example"
+  }
 }

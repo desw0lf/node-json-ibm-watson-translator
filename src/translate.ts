@@ -5,8 +5,9 @@ import {
   nestingReplacement,
 } from "./helpers/replacements";
 import { writeFile } from "./helpers/write-file";
+import { checkType } from "./helpers/check-type";
 // ? TYPES:
-import { APITranslateOutput, JSONContent } from "./types";
+import { APITranslateOutput, JSONContent, Indexes } from "./types";
 
 interface Replacements {
   doubleCurly: string[][];
@@ -32,7 +33,7 @@ export function translateFile(
   filename: string,
   originalData: JSONContent,
   output: APITranslateOutput,
-  indexes: { [key: string]: number[] | number },
+  indexes: Indexes,
   outputPath: string,
   replacements: Replacements
 ): void {
@@ -40,23 +41,44 @@ export function translateFile(
   // console.log(indexes);
   const translation = Object.entries(indexes).reduce(
     (final: JSONContent, [key, noArrayOrNumber]) => {
-      const isArray = noArrayOrNumber.constructor === Array;
-      const noArray: number[] = isArray
-        ? (noArrayOrNumber as number[])
-        : [noArrayOrNumber as number];
-      let tagsFixedAll: string | string[] = [];
+      const type = checkType(noArrayOrNumber);
+      // const isArray = noArrayOrNumber.constructor === Array;
+      const obj = type === "IS_OBJECT" ? Object.entries(noArrayOrNumber) : [];
+      function na() {
+        if (type === "IS_ARRAY") {
+          return noArrayOrNumber as number[];
+        }
+        if (type === "IS_NUMBER") {
+          return [noArrayOrNumber as number];
+        }
+        console.log({ noArrayOrNumber, z: obj.map((item) => item[1]) });
+        return obj.map((item) => item[1]);
+      }
+      const noArray: number[] | { [key: string]: number } = na();
+      // console.log({ noArray });
+      // else
+      let tagsFixedAll: string | string[] | { [key: string]: string } = [];
       let i: number;
       for (i = 0; i < noArray.length; i += 1) {
         const no = noArray[i];
         const raw = output.translations[no].translation;
         const replaced = replaceStuff(raw, no, replacements);
-        if (isArray) {
+        if (type === "IS_ARRAY") {
           (tagsFixedAll as string[]).push(replaced);
-        } else {
+        } else if (type === "IS_NUMBER") {
           tagsFixedAll = replaced;
+        } else {
+          console.log({ l: obj[i][0], replaced });
+          if (tagsFixedAll.constructor === Array) {
+            tagsFixedAll = {};
+          }
+          tagsFixedAll = {
+            ...(tagsFixedAll as { [key: string]: string }),
+            [obj[i][0]]: replaced,
+          };
         }
       }
-      // console.log(tagsFixed);
+      // console.log(tagsFixedAll);
       final[key] = tagsFixedAll;
       return final;
     },

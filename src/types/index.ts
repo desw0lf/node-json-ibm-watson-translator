@@ -1,9 +1,13 @@
-export type JSONContent = { [key: string]: string | string[] };
+export type JSONContent = {
+  [key: string]: string | string[] | { [key: string]: string };
+};
 export type Config = {
   url: string;
   apikey: string;
   inputLanguage: string | "en";
 };
+
+export type Indexes = { [key: string]: number[] | number };
 
 export type APITranslateInput = {
   url: string;
