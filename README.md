@@ -1,3 +1,6 @@
+> [!WARNING]
+> IBM® is announcing the **deprecation** of the Watson® Language Translator service for IBM Cloud® in all regions. As of 10 June 2023, the Language Translator tile will be removed from the IBM Cloud Platform for new customers; only existing customers will be able to access the product. As of 10 June 2024, the service will reach its End of Support date. As of 10 December 2024, the service will be withdrawn entirely and will no longer be available to any customers.
+
 # Installation
 `npm install node-json-ibm-watson-translator --save-dev`
 or global
